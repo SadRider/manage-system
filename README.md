@@ -1,6 +1,6 @@
-# manage-system
+# manage-system-正在开发中……
 
-根据lin-xin/vue-manage-system仿写的后台管理，用于学习Vue3；会努力多写一些注释，方便理解。[原项目地址](https://github.com/lin-xin/vue-manage-system)
+根据lin-xin/vue-manage-system仿（抄）写的后台管理，用于学习Vue3；会努力多写一些注释，方便理解。[原项目地址](https://github.com/lin-xin/vue-manage-system)
 
 ## 库、插件及其他
 

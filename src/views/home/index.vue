@@ -1,12 +1,18 @@
 <template>
   <div>
-    Home
+    <Header />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {};
+import Header from "@/components/layout/header.vue";
+export default {
+  name: "homePage",
+  components: {
+    Header,
+  },
+};
 </script>
 
 <style>
