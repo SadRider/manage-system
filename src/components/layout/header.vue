@@ -49,39 +49,44 @@
   </div>
 </template>
 
-<script>
-import { useRouter } from "vue-router";
-export default {
-  name: "Header",
-  setup(props) {
-    const router = useRouter();
-    const sidebar = reactive({
-      collapse: false,
-    });
-    const message = 2;
-    const jumpToHome = () => {
-      router.push("/");
-    };
-    const collapseChange = () => {
-      console.log("A");
-      sidebar.collapse = !sidebar.collapse;
-    };
-    const handleCommand = () => {
-      console.log("B");
-    };
-    const jumpToGitHub = () => {
-      window.open("https://github.com/SadRider/manage-system", "_blank");
-    };
-    return {
-      sidebar,
-      message,
-      jumpToHome,
-      collapseChange,
-      handleCommand,
-      jumpToGitHub,
-    };
-  },
-};
+<script setup>
+import { useSidebarStore } from '../../store/sidebar'
+const message = 2
+// =====================侧边栏折叠=========================
+// sidebar:实例化store,可以直接在 store 上访问 state、getters 和 actions 中定义的任何属性
+const sidebar = useSidebarStore()
+const jumpToHome = () => {
+  router.push('/')
+}
+// 侧边栏折叠
+const collapseChange = () => {
+  sidebar.handleCollapse()
+}
+
+onMounted(() => {
+  if (document.body.clientWidth < 1500) {
+    collapseChange()
+  }
+})
+// ======================================================
+
+// =================用户名下拉菜单事件=====================
+const router = useRouter()
+const handleCommand = (command) => {
+  console.log(command)
+  if (command === 'loginout') {
+    localStorage.removeItem('ms_username')
+    router.push('/login')
+  } else {
+    // router.push('/user')
+  }
+}
+// ======================================================
+
+// 跳转到个人github
+const jumpToGitHub = () => {
+  window.open('https://github.com/SadRider/manage-system', '_blank')
+}
 </script>
 
 <style lang='stylus' scoped>

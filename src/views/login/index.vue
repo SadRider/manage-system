@@ -37,55 +37,46 @@
   </div>
 </template>
 
-<script>
-import { userLogin } from "@/api/api";
-import { useRouter } from "vue-router";
-export default {
-  name: "loginPage",
-  setup(props) {
-    const router = useRouter();
-    // 登录表单
-    const param = reactive({
-      username: "admin",
-      password: "123456",
-    });
-    // 使用组合式 API，ref引用将存储在与名字匹配的 ref 里(Vue2:this.$refs.login)
-    const login = ref(null);
-    // 表单规则
-    const rules = reactive({
-      username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
-      password: [{ required: true, message: "请输入密码", trigger: "blur" }],
-    });
-    const submitForm = async (formEl) => {
-      if (!formEl) return;
-      await formEl.validate((valid, fields) => {
-        if (valid) {
-          userLogin(param)
-            .then((res) => {
-              if (res.success) {
-                ElMessage.success(res.message);
-                localStorage.setItem("ms_username", param.username);
-                router.push("/home");
-              }
-            })
-            .catch((err) => {
-              console.error(err);
-            });
-        } else {
-          console.log(fields);
-          ElMessage.success(res.message);
-          return false;
-        }
-      });
-    };
-    return {
-      param,
-      rules,
-      login,
-      submitForm,
-    };
-  },
-};
+<script setup>
+import { userLogin } from '@/api/api'
+const router = useRouter()
+// 登录表单
+const param = reactive({
+  username: 'admin',
+  password: '123456'
+})
+// 使用组合式 API，ref引用将存储在与名字匹配的 ref 里(Vue2:this.$refs.login)
+const login = ref(null)
+// 表单规则
+const rules = reactive({
+  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+})
+const submitForm = async (formEl) => {
+  if (!formEl) return
+  await formEl.validate((valid, fields) => {
+    if (valid) {
+      // mock的登录接口，登陆成功后会返回路由
+      userLogin(param)
+        .then((res) => {
+          if (res.success) {
+            ElMessage.success(res.message)
+            localStorage.setItem('ms_username', param.username)
+            // 保存路由
+            localStorage.setItem('ms_routes', JSON.stringify(res.data.router))
+            router.push('/')
+          }
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    } else {
+      console.log(fields)
+      ElMessage.success(res.message)
+      return false
+    }
+  })
+}
 </script>
 
 <style lang='stylus' scoped>

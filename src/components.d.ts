@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    '`': typeof import('~icons/ep/`'-arrow-down'`')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
@@ -15,19 +16,23 @@ declare module '@vue/runtime-core' {
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElSubmenu: typeof import('element-plus/es')['ElSubmenu']
+    ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
-    Header: typeof import('./components/layout/header.vue')['default']
+    Header: typeof import('./components/layout/Header.vue')['default']
     IEpArrowDown: typeof import('~icons/ep/arrow-down')['default']
     IEpBell: typeof import('~icons/ep/bell')['default']
-    IEpBottom: typeof import('~icons/ep/bottom')['default']
     IEpExpand: typeof import('~icons/ep/expand')['default']
     IEpFold: typeof import('~icons/ep/fold')['default']
+    IEpHomeFilled: typeof import('~icons/ep/home-filled')['default']
     IEpLock: typeof import('~icons/ep/lock')['default']
-    IEpLollipop: typeof import('~icons/ep/lollipop')['default']
-    IEpUnfold: typeof import('~icons/ep/unfold')['default']
     IEpUser: typeof import('~icons/ep/user')['default']
-    Menu: typeof import('./components/layout/menu.vue')['default']
+    Menu: typeof import('./components/layout/Menu.vue')['default']
+    MenuIcon: typeof import('./components/MenuIcon.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Tags: typeof import('./components/layout/Tags.vue')['default']
   }
 }

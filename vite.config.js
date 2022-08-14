@@ -7,20 +7,20 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Inspect from 'vite-plugin-inspect'
-
+import eslintPlugin from 'vite-plugin-eslint'
 const pathSrc = path.resolve(__dirname, 'src')
 
 export default defineConfig({
   resolve: {
     alias: {
-      '@': pathSrc,
-    },
+      '@': pathSrc
+    }
   },
   plugins: [
     Vue(),
     AutoImport({
-      // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
-      imports: ['vue'],
+      // 自动导入 vue,vue-router,pinia 相关函数
+      imports: ['vue', 'pinia', 'vue-router'],
 
       // 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
       resolvers: [
@@ -28,30 +28,35 @@ export default defineConfig({
 
         // 自动导入图标组件
         IconsResolver({
-          prefix: 'Icon',
-        }),
+          prefix: 'Icon'
+        })
       ],
 
-      dts: path.resolve(pathSrc, 'auto-imports.d.ts'),
+      dts: path.resolve(pathSrc, 'auto-imports.d.ts')
     }),
 
     Components({
+      dirs: ['src/components', 'src/store'],
       resolvers: [
         // 自动注册图标组件
         IconsResolver({
-          enabledCollections: ['ep'],
+          enabledCollections: ['ep']
         }),
         // 自动导入 Element Plus 组件
-        ElementPlusResolver(),
+        ElementPlusResolver()
       ],
 
-      dts: path.resolve(pathSrc, 'components.d.ts'),
+      dts: path.resolve(pathSrc, 'components.d.ts')
     }),
 
     Icons({
-      autoInstall: true,
+      compiler: 'vue3',
+      autoInstall: true
     }),
 
     Inspect(),
-  ],
+    eslintPlugin({
+      include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue']
+    })
+  ]
 })
