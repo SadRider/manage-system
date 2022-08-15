@@ -11,7 +11,7 @@ instance.interceptors.request.use(
   },
   error => {
     console.log(error)
-    return Promise.reject('发送请求失败')
+    return Promise.reject(new Error('发送请求失败'))
   }
 )
 
@@ -20,12 +20,12 @@ instance.interceptors.response.use(
     if (response.status === 200) {
       return response.data
     } else {
-      Promise.reject('接收请求失败')
+      Promise.reject(new Error('接收请求失败'))
     }
   },
   error => {
     console.log(error)
-    return Promise.reject('接收请求失败')
+    return Promise.reject(new Error('接收请求失败'))
   }
 )
 

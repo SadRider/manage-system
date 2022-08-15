@@ -24,6 +24,7 @@ declare module '@vue/runtime-core' {
     Header: typeof import('./components/layout/Header.vue')['default']
     IEpArrowDown: typeof import('~icons/ep/arrow-down')['default']
     IEpBell: typeof import('~icons/ep/bell')['default']
+    IEpClose: typeof import('~icons/ep/close')['default']
     IEpExpand: typeof import('~icons/ep/expand')['default']
     IEpFold: typeof import('~icons/ep/fold')['default']
     IEpHomeFilled: typeof import('~icons/ep/home-filled')['default']

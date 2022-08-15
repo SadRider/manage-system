@@ -40,7 +40,7 @@
         <template v-else>
           <el-menu-item :index="item.path" :key="item.path">
             <!-- <component :is="`IEp${item.meta.icon}`" /> -->
-            <MenuIcon />
+            <MenuIcon :type='item.meta.icon' />
             <template #title>{{ item.meta.title }}</template>
           </el-menu-item>
         </template>
@@ -50,10 +50,10 @@
 </template>
 
 <script setup>
-import { useSidebarStore } from '../../store/sidebar'
-const router = useRoute()
+import { useSidebarStore } from '@/store/sidebar'
+const route = useRoute()
 const onRoutes = computed(() => {
-  return router.path
+  return route.path
 })
 const sidebar = useSidebarStore()
 const menuList = JSON.parse(localStorage.getItem('ms_routes'))

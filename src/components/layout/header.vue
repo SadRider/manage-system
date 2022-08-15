@@ -50,8 +50,9 @@
 </template>
 
 <script setup>
-import { useSidebarStore } from '../../store/sidebar'
+import { useSidebarStore } from '@/store/sidebar'
 const message = 2
+const router = useRouter()
 // =====================侧边栏折叠=========================
 // sidebar:实例化store,可以直接在 store 上访问 state、getters 和 actions 中定义的任何属性
 const sidebar = useSidebarStore()
@@ -71,7 +72,6 @@ onMounted(() => {
 // ======================================================
 
 // =================用户名下拉菜单事件=====================
-const router = useRouter()
 const handleCommand = (command) => {
   console.log(command)
   if (command === 'loginout') {
