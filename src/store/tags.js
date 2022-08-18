@@ -9,10 +9,10 @@ export const useTagsStore = defineStore('tags', {
     // 标签栏显隐
     show: (state) => {
       return state.list.length > 0
-    },
-    nameList: (state) => {
-      return state.list.map(item => item.name)
     }
+    // nameList: (state) => {
+    //   return state.list.map(item => item.name)
+    // }
   },
   actions: {
     // 添加新标签
@@ -29,7 +29,9 @@ export const useTagsStore = defineStore('tags', {
     },
     // 关闭其他标签
     closeTagsOther (data) {
-      this.list = data
+      console.log(data)
+      this.list = []
+      this.list.push(data)
     }
   }
 })

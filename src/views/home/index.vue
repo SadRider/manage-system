@@ -4,7 +4,6 @@
     <Menu />
     <div class="content_box" :class="{'content_collapse':sidebar.collapse}">
       <Tags />
-      <!-- 这部分没搞懂什么意思 -->
       <div class="content">
         <router-view v-slot="{ Component }">
             <transition name="move" mode="out-in">

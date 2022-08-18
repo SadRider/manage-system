@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="tags">
+    <div class="tags" v-if="tags.show">
       <ul>
-        <li class="tags_li" v-for="(item,index) in tags.list" :key="index" :class="{'active':isActive(item.path)}" @contextmenu.prevent="openMenu($event)">
+        <li class="tags_li" v-for="(item,index) in tags.list" :key="index" :class="{'active':isActive(item.path)}" @contextmenu.prevent="openMenu($event,item)">
           <router-link :to="item.path" class="tags_li_title">{{item.title}}</router-link>
           <span class="tags_li_icon" @click="closeTags(index)">
             <el-icon><IEpClose /></el-icon>
@@ -12,7 +12,7 @@
     </div>
     <div class="tags_close_box" v-show="visible" :style="{top:top+'px',left:left+'px'}">
       <ul>
-        <li>关闭其他标签</li>
+        <li @click="closeTagsOther">关闭其他标签</li>
         <li @click="clearTags">关闭所有标签</li>
       </ul>
     </div>
@@ -24,9 +24,11 @@ import { useTagsStore } from '@/store/tags'
 import { onBeforeRouteUpdate } from 'vue-router'
 // 右键菜单显示条件
 const visible = ref(false)
-
+// top、left:右键菜单的坐标
 const top = ref(0)
 const left = ref(0)
+// 记录被右键的标签
+let activeTags = {}
 const route = useRoute()
 // const router = useRouter()
 // 选择赋予样式
@@ -57,20 +59,22 @@ onBeforeRouteUpdate((to) => {
 })
 
 // 右键菜单
-const openMenu = (e) => {
-  console.log(JSON.stringify(e))
+const openMenu = (e, item) => {
+  console.log(e)
   visible.value = true
-  top.value = e.clientY
-  left.value = e.clientX
+  activeTags = item
+  top.value = e.layerY
+  left.value = e.layerX
 }
 
 const closeMenu = () => {
   visible.value = false
 }
-// 关闭其他页签没什么思路，得去查一下右键时怎么获取被右键点击得标签的信息
-// const closeTagsOther = () => {
-//   console.log('a')
-// }
+// 关闭其他页签
+const closeTagsOther = () => {
+  tags.closeTagsOther(activeTags)
+  visible.value = false
+}
 const clearTags = () => {
   tags.clearTags()
   visible.value = false
