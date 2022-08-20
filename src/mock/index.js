@@ -20,7 +20,7 @@ Mock.mock('/api/userLogin', 'post', {
         name: 'table',
         meta: {
           title: '基础表格',
-          icon: 'HomeFilled'
+          icon: 'Grid'
         },
         component: 'baseTable/index.vue'
       }
@@ -121,6 +121,47 @@ Mock.mock('/api/getCharts', 'get', {
         ]
       }
     ]
+  }
+})
+Mock.mock('/api/getTableData', 'post', {
+  code: 0,
+  success: true,
+  message: '登录成功',
+  data: {
+    list: [{
+      id: 1,
+      name: '张三',
+      money: 123,
+      address: '广东省东莞市长安镇',
+      state: '成功',
+      date: '2019-11-1'
+    },
+    {
+      id: 2,
+      name: '李四',
+      money: 456,
+      address: '广东省广州市白云区',
+      state: '成功',
+      date: '2019-10-11'
+    },
+    {
+      id: 3,
+      name: '王五',
+      money: 789,
+      address: '湖南省长沙市',
+      state: '失败',
+      date: '2019-11-11'
+    },
+    {
+      id: 4,
+      name: '赵六',
+      money: 1011,
+      address: '福建省厦门市鼓浪屿',
+      state: '成功',
+      date: '2019-10-20'
+    }
+    ],
+    pageTotal: 4
   }
 })
 Mock.setup({

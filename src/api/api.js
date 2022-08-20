@@ -11,3 +11,7 @@ export const getTodoListByUsername = (data) => {
 export const getChartsData = () => {
   return request('/api/getCharts', 'get')
 }
+
+export const getTableData = (data) => {
+  return request('/api/getTableData', 'post', data)
+}

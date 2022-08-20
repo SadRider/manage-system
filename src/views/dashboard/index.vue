@@ -93,7 +93,7 @@
           <el-table-column width="150px">
             <template  #default>
               <el-link type="primary"><el-icon><IEpEdit /></el-icon>编辑</el-link>
-              <el-link type="primary" style="margin-left: 10px;"><el-icon><IEpDelete /></el-icon>删除</el-link>
+              <el-link type="danger" style="margin-left: 10px;"><el-icon><IEpDelete /></el-icon>删除</el-link>
             </template>
           </el-table-column>
         </el-table>
