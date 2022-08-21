@@ -12,7 +12,6 @@
 <script setup>
 const route = useRoute()
 const meta = route.meta
-console.log(JSON.parse(JSON.stringify(route)))
 </script>
 
 <style lang="stylus" scoped>

@@ -123,6 +123,7 @@ const name = localStorage.getItem('ms_username')
 const role = name === 'admin' ? '管理员' : '普通用户'
 
 // 这里是模拟待办列表从接口获取数据
+// 编辑和删除功能就不写了,跟表格页一样的,意义不大
 const todoList = reactive([])
 const getTodoList = async () => {
   try {

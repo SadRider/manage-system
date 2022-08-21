@@ -56,7 +56,8 @@ const onRoutes = computed(() => {
   return route.path
 })
 const sidebar = useSidebarStore()
-const menuList = JSON.parse(localStorage.getItem('ms_routes'))
+const router = useRouter()
+const menuList = router.options.routes[2].children
 </script>
 
 <style lang='stylus' scoped>

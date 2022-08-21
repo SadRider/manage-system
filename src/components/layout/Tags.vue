@@ -4,7 +4,7 @@
       <ul>
         <li class="tags_li" v-for="(item,index) in tags.list" :key="index" :class="{'active':isActive(item.path)}" @contextmenu.prevent="openMenu($event,item)">
           <router-link :to="item.path" class="tags_li_title">{{item.title}}</router-link>
-          <span class="tags_li_icon" @click="closeTags(index)">
+          <span class="tags_li_icon"><!--@click="closeTags(index)"-->
             <el-icon><IEpClose /></el-icon>
           </span>
         </li>
@@ -30,7 +30,7 @@ const left = ref(0)
 // 记录被右键的标签
 let activeTags = {}
 const route = useRoute()
-// const router = useRouter()
+const router = useRouter()
 // 选择赋予样式
 const isActive = (path) => {
   return path === route.fullPath
@@ -70,6 +70,10 @@ const openMenu = (e, item) => {
 const closeMenu = () => {
   visible.value = false
 }
+// 关闭页签
+// const closeTags = (index) => {
+//   tags.delTagsItem(index)
+// }
 // 关闭其他页签
 const closeTagsOther = () => {
   tags.closeTagsOther(activeTags)
@@ -77,6 +81,7 @@ const closeTagsOther = () => {
 }
 const clearTags = () => {
   tags.clearTags()
+  router.push('/')
   visible.value = false
 }
 // 监听visible，为true添加关闭菜单监听事件，为false时移除事件

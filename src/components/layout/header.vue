@@ -17,7 +17,7 @@
             :content="message ? `有${message}条未读信息` : `消息中心`"
             placement="bottom"
           >
-            <IEpBell />
+            <el-icon @click="toMessage"><IEpBell /></el-icon>
           </el-tooltip>
           <span class="btn_bell_badge" v-if="message"></span>
         </div>
@@ -51,7 +51,7 @@
 
 <script setup>
 import { useSidebarStore } from '@/store/sidebar'
-const message = 2
+const message = 10
 const router = useRouter()
 // =====================侧边栏折叠=========================
 // sidebar:实例化store,可以直接在 store 上访问 state、getters 和 actions 中定义的任何属性
@@ -71,11 +71,19 @@ onMounted(() => {
 })
 // ======================================================
 
+// =======================消息===========================
+const toMessage = () => {
+  router.push('/message')
+}
+// ======================================================
+
 // =================用户名下拉菜单事件=====================
 const handleCommand = (command) => {
   console.log(command)
   if (command === 'loginout') {
     localStorage.removeItem('ms_username')
+    localStorage.removeItem('ms_routes')
+    localStorage.removeItem('404')
     router.push('/login')
   } else {
     // router.push('/user')

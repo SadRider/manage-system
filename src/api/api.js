@@ -15,3 +15,15 @@ export const getChartsData = () => {
 export const getTableData = (data) => {
   return request('/api/getTableData', 'post', data)
 }
+
+export const delTableData = (data) => {
+  return request('/api/delTableData', 'post', data)
+}
+
+export const updateTableData = (data) => {
+  return request('/api/updateTableData', 'post', data)
+}
+
+export const getMessageList = () => {
+  return request('/api/getMessageList', 'get')
+}

@@ -31,7 +31,9 @@
         <div class="login_btn">
           <el-button type="primary" @click="submitForm(login)">登录</el-button>
         </div>
-        <p class="login_tips">提示：用户名及密码随意填写</p>
+        <p class="login_tips">提示：管理员账户：adimi 管理员密码：123456</p>
+        <p class="login_tips">普通用户名及密码随意填写</p>
+
       </el-form>
     </div>
   </div>
@@ -59,12 +61,16 @@ const submitForm = async (formEl) => {
       // mock的登录接口，登陆成功后会返回路由
       userLogin(param)
         .then((res) => {
+          console.log(res)
           if (res.success) {
             ElMessage.success(res.message)
             localStorage.setItem('ms_username', param.username)
             // 保存路由
             localStorage.setItem('ms_routes', JSON.stringify(res.data.router))
+            localStorage.setItem('404', JSON.stringify(res.data.notFound))
             router.push('/')
+          } else {
+            ElMessage.error(res.message)
           }
         })
         .catch((err) => {

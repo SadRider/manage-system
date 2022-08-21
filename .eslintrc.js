@@ -24,7 +24,8 @@ module.exports = {
     'vue'
   ],
   rules: {
-    'no-undef':'off',
+    'array-callback-return': 'off',
+    'no-undef': 'off',
     'vue/multi-word-component-names': 'off',
     semi: [2, 'never'], // 禁止尾部使用分号“ ; ”
     'no-var': 'error', // 禁止使用 var
