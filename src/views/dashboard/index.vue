@@ -1,6 +1,6 @@
 <!-- 系统首页 -->
 <template>
-<div id="dashboard">
+<div class="dashboard_container">
     <el-row :gutter="20">
     <el-col :span="8">
       <el-card shadow="hover" class="mgb20 card_a">

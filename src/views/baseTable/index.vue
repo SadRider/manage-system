@@ -2,6 +2,7 @@
 <div>
 <Title />
 <div class="container">
+    <div class="explain">基础表格，可根据条件搜索，可编辑、删除行，以及分页功能。</div>
     <div class="handle_box">
         <el-select v-model="query.address" placeholder="地址" class="handle_select mr10" clearable>
             <el-option key="1" label="广东省" value="广东省"></el-option>

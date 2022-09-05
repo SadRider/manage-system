@@ -27,3 +27,34 @@ export const updateTableData = (data) => {
 export const getMessageList = () => {
   return request('/api/getMessageList', 'get')
 }
+export const readMessage = (data) => {
+  return request('/api/readMessage', 'post', data)
+}
+
+export const readAllMessage = () => {
+  return request('/api/readAllMessage', 'get')
+}
+
+export const delMessage = (data) => {
+  return request('/api/delMessage', 'post', data)
+}
+
+export const delAllMessage = () => {
+  return request('/api/delAllMessage', 'get')
+}
+
+export const returnMessage = (data) => {
+  return request('/api/returnMessage', 'post', data)
+}
+
+export const returnAllMessage = () => {
+  return request('/api/returnAllMessage', 'get')
+}
+
+export const clearAllMessage = () => {
+  return request('/api/clearAllMessage', 'get')
+}
+
+export const sumbitFormData = (data) => {
+  return request('/api/submitForm', 'post', data)
+}

@@ -4,7 +4,7 @@
       <ul>
         <li class="tags_li" v-for="(item,index) in tags.list" :key="index" :class="{'active':isActive(item.path)}" @contextmenu.prevent="openMenu($event,item)">
           <router-link :to="item.path" class="tags_li_title">{{item.title}}</router-link>
-          <span class="tags_li_icon"><!--@click="closeTags(index)"-->
+          <span class="tags_li_icon" @click="closeTags(index)">
             <el-icon><IEpClose /></el-icon>
           </span>
         </li>
@@ -60,7 +60,7 @@ onBeforeRouteUpdate((to) => {
 
 // 右键菜单
 const openMenu = (e, item) => {
-  console.log(e)
+  console.log(item)
   visible.value = true
   activeTags = item
   top.value = e.layerY
@@ -71,12 +71,20 @@ const closeMenu = () => {
   visible.value = false
 }
 // 关闭页签
-// const closeTags = (index) => {
-//   tags.delTagsItem(index)
-// }
+const closeTags = (index) => {
+  const delItem = tags.list[index]
+  tags.delTagsItem(index)
+  const item = tags.list[index] ? tags.list[index] : tags.list[index - 1]
+  if (item) {
+    delItem.path === route.fullPath && router.push(item.path)
+  } else {
+    router.push('/')
+  }
+}
 // 关闭其他页签
 const closeTagsOther = () => {
   tags.closeTagsOther(activeTags)
+  router.push(activeTags.path)
   visible.value = false
 }
 const clearTags = () => {

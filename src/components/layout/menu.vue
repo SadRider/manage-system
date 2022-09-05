@@ -15,24 +15,26 @@
       <template v-for="item in menuList">
         <template v-if="item.children">
           <el-sub-menu :index="item.path" :key="item.path">
-            <template #title>{{ item.meta.title }}</template>
+            <!-- 这里elementPlus似乎有bug，收起菜单栏不会隐藏标题 -->
+            <template #title><MenuIcon :type='item.meta.icon' /><span>{{ item.meta.title }}</span></template>
             <template v-for="child in item.children">
               <el-sub-menu
                 v-if="child.children"
                 :index="child.path"
                 :key="child.path"
               >
-                <template #title>{{ child.meta.title }}</template>
+                <template #title><MenuIcon :type='child.meta.icon' /><span>{{ child.meta.title }}</span></template>
                 <el-menu-item
                   v-for="(item, i) in child.children"
                   :key="i"
                   :index="item.path"
                 >
-                  {{ item.meta.title }}
+                  <template #title><MenuIcon :type='item.meta.icon' /><span>{{ item.meta.title }}</span></template>
                 </el-menu-item>
               </el-sub-menu>
               <el-menu-item v-else :index="child.path" :key="child.path">
-                <template #title>{{ child.meta.title }}</template>
+                <MenuIcon :type='child.meta.icon' />
+                <template #title><span>{{ child.meta.title }}</span></template>
               </el-menu-item>
             </template>
           </el-sub-menu>
@@ -41,7 +43,7 @@
           <el-menu-item :index="item.path" :key="item.path">
             <!-- <component :is="`IEp${item.meta.icon}`" /> -->
             <MenuIcon :type='item.meta.icon' />
-            <template #title>{{ item.meta.title }}</template>
+            <template #title><span>{{ item.meta.title }}</span></template>
           </el-menu-item>
         </template>
       </template>

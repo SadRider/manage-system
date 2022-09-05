@@ -35,6 +35,45 @@ const routes = [
       },
       component: () => import('../views/baseTable/index.vue')
     }, {
+      path: '/baseForm',
+      name: 'baseForm',
+      meta: {
+        title: '基础表单',
+        icon: 'Platform'
+      },
+      redirect: '/',
+      children: [
+        {
+          path: '/baseForm/form',
+          name: 'form',
+          meta: {
+            title: '表单',
+            icon: 'Setting'
+          },
+          component: () => import('../views/baseForm/index.vue')
+        },
+        {
+          path: '/thr',
+          name: 'editor',
+          redirect: '/thr/editor',
+          meta: {
+            title: '三级菜单',
+            icon: 'Setting'
+          },
+          children: [
+            {
+              path: '/thr/editor',
+              name: 'editor',
+              meta: {
+                title: '富文本编辑器',
+                icon: 'EditPen'
+              },
+              component: () => import('../views/editor/index.vue')
+            }
+          ]
+        }
+      ]
+    }, {
       path: '/message',
       name: 'message',
       meta: {
@@ -42,7 +81,25 @@ const routes = [
         icon: 'Message'
       },
       component: () => import('../views/message/index.vue')
-    }]
+    }, {
+      path: '/doc',
+      name: 'document',
+      meta: {
+        title: '参考文档',
+        icon: 'Document'
+      },
+      component: () => import('../views/document/index.vue')
+    }
+    // {
+    //   path: '/charts',
+    //   name: 'charts',
+    //   meta: {
+    //     title: 'Echarts封装',
+    //     icon: 'Histogram'
+    //   },
+    //   component: () => import('../views/charts/index.vue')
+    // }
+    ]
   }
 ]
 
@@ -69,7 +126,7 @@ router.beforeEach((to, from, next) => {
       next()
     } else {
       isRoutesLoad.setRoutesLoadMark(true)
-      if (JSON.stringify(routesList) !== '[]') {
+      if (routesList && JSON.stringify(routesList) !== '[]') {
         for (const item of routesList) {
           const element = {
             path: item.path,
@@ -81,14 +138,15 @@ router.beforeEach((to, from, next) => {
           router.options.routes[2].children.push(element)
         }
       }
-      const notFoundEl = {
-        path: notFoundPage[0].path,
-        name: notFoundPage[0].name,
-        component: () => import(`../views/${notFoundPage[0].component}`)
+      if (notFoundPage) {
+        const notFoundEl = {
+          path: notFoundPage[0].path,
+          name: notFoundPage[0].name,
+          component: () => import(`../views/${notFoundPage[0].component}`)
+        }
+        router.addRoute(notFoundEl)
+        router.options.routes.push(notFoundEl)
       }
-      router.addRoute(notFoundEl)
-      console.log(notFoundPage)
-      router.options.routes.push(notFoundEl)
       next({ ...to, replace: true })
     }
     // 如果未登录且前往非登录页,则清空路由表并跳转登录页重新获取路由表

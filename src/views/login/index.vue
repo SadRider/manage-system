@@ -1,5 +1,5 @@
 <template>
-  <div class="login_wrapper">
+  <div class="login_container">
     <div class="ms_login">
       <div class="ms_title">后台管理系统</div>
       <el-form
@@ -86,7 +86,7 @@ const submitForm = async (formEl) => {
 </script>
 
 <style lang='stylus' scoped>
-.login_wrapper
+.login_container
   position relative
   width 100%
   height 100%

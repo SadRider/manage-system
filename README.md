@@ -1,21 +1,17 @@
-# manage-system-正在开发中……
+# manage-system-基于Vue3的后台管理系统
 
-根据lin-xin/vue-manage-system仿（抄）写的后台管理，用于学习Vue3；会努力多写一些注释，方便理解。[原项目地址](https://github.com/lin-xin/vue-manage-system)
+根据lin-xin/vue-manage-system仿写的简单的后台管理，用于学习Vue3,使用mockjs模拟接口数据；会努力多写一些注释，方便理解。[原项目地址](https://github.com/lin-xin/vue-manage-system)
 
 ## 库、插件及其他
 
--   [x] Element Plus：UI组件库，用于快速搭建页面，工作的时候也一直用这个（诶~）；
--   [x] pinia：Vuex的替代？没使用过，趁机一起学习；
--   [x] stylus：个人用得最舒服的css预处理器，工作用sass比较多；
--   [x] mockjs：用来模拟接口，也是第一次使用；
+-   [x] Element Plus
+-   [x] pinia
+-   [x] stylus
+-   [x] mockjs
 -   [x] axios
 -   [x] echarts
 
-# 2022-8-21
-估摸着也不用写那么多页面，接下来打算给每个页面嵌个功能说明。
-# 2022-8-20
-玩了一天LOL，明天全身心投入到这边来。
-# 2022-08-18
-终于把首页完成了,拖拖拉拉的。今天去检查心脏了，还好没事，只是焦虑影响到了，还是要早睡早起。
-# 2022-08-15
-写代码能力还是差了点，经常没思路，可以说是抄都抄不明白。最近心脏附近总是隐隐作痛，得找时间去检查一下，看来辞职休息是正确的选择，就是公司非要三个星期后才能放我走，难受。
+# 后续补充
+
+typescript版本
+Echarts封装

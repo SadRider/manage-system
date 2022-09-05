@@ -12,6 +12,7 @@
 <script setup>
 const route = useRoute()
 const meta = route.meta
+console.log(route)
 </script>
 
 <style lang="stylus" scoped>

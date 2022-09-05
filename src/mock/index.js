@@ -128,7 +128,6 @@ Mock.mock('/api/delTableData', 'post', param => {
   const index = tableList.findIndex(item => {
     return item.id === body.id
   })
-  console.log(index)
   tableList.splice(index, 1)
   return {
     code: 0,
@@ -151,7 +150,22 @@ Mock.mock('/api/updateTableData', 'post', param => {
     message: '修改成功'
   }
 })
-// 生成消息列表
+// 表单提交
+Mock.mock('/api/submitForm', 'post', param => {
+  const body = JSON.parse(param.body)
+  const date = new Date()
+  const now = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+  const data = body
+  data.id = Random.id()
+  data.date = now
+  tableList.unshift(data)
+  return {
+    code: 0,
+    success: true,
+    message: '修改成功'
+  }
+})
+// =================消息列表===========================
 const messageList = {
   unread: [],
   read: [],
@@ -182,6 +196,93 @@ Mock.mock('/api/getMessageList', 'get', {
     messageList
   }
 })
+Mock.mock('/api/readMessage', 'post', param => {
+  const body = JSON.parse(param.body)
+  const index = messageList.unread.findIndex(item => {
+    return item.id === body.id
+  })
+  const el = messageList.unread.splice(index, 1)
+  messageList.read.push(...el)
+  return {
+    code: 0,
+    success: true,
+    message: '修改成功'
+  }
+})
+
+Mock.mock('/api/readAllMessage', 'get', () => {
+  const list = messageList.unread
+  messageList.read.push(...list)
+  messageList.unread = []
+  return {
+    code: 0,
+    success: true,
+    message: '修改成功'
+  }
+})
+
+Mock.mock('/api/delMessage', 'post', param => {
+  const body = JSON.parse(param.body)
+  const index = messageList.read.findIndex(item => {
+    return item.id === body.id
+  })
+  const el = messageList.read.splice(index, 1)
+  messageList.recycle.push(...el)
+  return {
+    code: 0,
+    success: true,
+    message: '删除成功'
+  }
+})
+
+Mock.mock('/api/delAllMessage', 'get', () => {
+  const list = messageList.read
+  messageList.recycle.push(...list)
+  messageList.read = []
+  return {
+    code: 0,
+    success: true,
+    message: '删除成功'
+  }
+})
+Mock.setup({
+  timeout: 400
+})
+
+Mock.mock('/api/returnMessage', 'post', param => {
+  const body = JSON.parse(param.body)
+  const index = messageList.recycle.findIndex(item => {
+    return item.id === body.id
+  })
+  const el = messageList.recycle.splice(index, 1)
+  messageList.read.push(...el)
+  return {
+    code: 0,
+    success: true,
+    message: '还原成功'
+  }
+})
+
+Mock.mock('/api/returnAllMessage', 'get', () => {
+  const list = messageList.recycle
+  messageList.read.push(...list)
+  messageList.recycle = []
+  return {
+    code: 0,
+    success: true,
+    message: '还原成功'
+  }
+})
+
+Mock.mock('/api/clearAllMessage', 'get', () => {
+  messageList.recycle = []
+  return {
+    code: 0,
+    success: true,
+    message: '清空成功'
+  }
+})
+// =====================================================
 Mock.setup({
   timeout: 400
 })
