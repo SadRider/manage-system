@@ -12,6 +12,8 @@
 -   [x] echarts
 
 # 后续补充
+首次加载太卡了，需要优化vite加载
 
 typescript版本
+
 Echarts封装
