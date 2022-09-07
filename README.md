@@ -10,31 +10,33 @@
 -   [x] mockjs
 -   [x] axios
 -   [x] echarts
-## 展示
 
-# 登录
+# 展示
+
+## 登录
 ![Image text](https://github.com/SadRider/manage-system/raw/main/show/login.png)
 
-# 首页
+## 首页
 ![Image text](https://github.com/SadRider/manage-system/raw/main/show/dashboard.png)
 
-# 表格
+## 表格
 ![Image text](https://github.com/SadRider/manage-system/raw/main/show/table.png)
 
-# 表单
+## 表单
 ![Image text](https://github.com/SadRider/manage-system/raw/main/show/baseForm.png)
 
-# 富文本编辑器
+## 富文本编辑器
 ![Image text](https://github.com/SadRider/manage-system/raw/main/show/editor.png)
 
-# 消息列表
+## 消息列表
 ![Image text](https://github.com/SadRider/manage-system/raw/main/show/message.png)
 
-# 参考文档
+## 参考文档
 ![Image text](https://github.com/SadRider/manage-system/raw/main/show/doc.png)
 
-# 权限页面
+## 权限页面
 ![Image text](https://github.com/SadRider/manage-system/raw/main/show/auth.png)
+
 # 后续补充
 首次加载太卡了，需要优化vite加载
 
