@@ -10,9 +10,8 @@
 -   [x] mockjs
 -   [x] axios
 -   [x] echarts
-
 # 展示
-![Image text](https://github.com/SadRider/manage-system/blob/main/public/show/login.png)
+![Image text](https://github.com/SadRider/manage-system/raw/main/public/show/login.png)
 
 # 后续补充
 首次加载太卡了，需要优化vite加载
