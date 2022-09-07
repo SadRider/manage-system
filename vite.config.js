@@ -11,7 +11,7 @@ import eslintPlugin from 'vite-plugin-eslint'
 const pathSrc = path.resolve(__dirname, 'src')
 
 export default defineConfig({
-  base:'/manage-system/',
+  // base:'/manage-system/',
   resolve: {
     alias: {
       '@': pathSrc

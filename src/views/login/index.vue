@@ -1,5 +1,6 @@
 <template>
   <div class="login_container">
+    <img src="../../../public/img/workRoom.jpeg">
     <div class="ms_login">
       <div class="ms_title">后台管理系统</div>
       <el-form
@@ -90,8 +91,10 @@ const submitForm = async (formEl) => {
   position relative
   width 100%
   height 100%
-  background-image url('../../public/img/workRoom.jpeg')
   background-size 100%
+  img
+    width 100%
+    height 100vh
   .ms_login
     position absolute
     left 50%
